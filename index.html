@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LES ACTUALITÉS DU JOUR</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #FFFFFF; /*Couleur du fond*/ }
+        h1 { text-align: center; text-decoration: underline; font-size: 3em; }
+        ul { list-style-type: none; padding: 0; text-align: center; font-weight: bold; font-size: 2.2em;  }
+        li { margin: 35px 0; }
+        a { text-decoration: none; color: #333; }
+        a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <img src="C:\actuscreenly\zlogoanstel.png" alt="" class="logo">
+
+    <h1>Les actualités du jour</h1>
+
+    <div2 id="current_date">
+    <script>
+        
+        date = new Date();
+        year = date.getFullYear();
+        month = date.getMonth() +1;
+        day = date.getDate();
+
+        document.getElementById("current_date").innerHTML = day + "/" + month + "/" + year;
+
+    </script>
+</div2>
+
+    <div3 id="heure">
+    <script>
+    function afficherHeure() {
+    var date = new Date();
+    var heures = date.getHours();
+    var minutes = date.getMinutes();
+    var secondes = date.getSeconds();
+    
+    // Ajouter un zéro devant les chiffres si nécessaire
+    heures = (heures < 10) ? "0" + heures : heures;
+    minutes = (minutes < 10) ? "0" + minutes : minutes;
+    secondes = (secondes < 10) ? "0" + secondes : secondes;
+    
+    var heureActuelle = heures + ":" + minutes + ":" + secondes;
+    
+    document.getElementById("heure").innerHTML = heureActuelle;
+    
+    // Rafraîchir l'heure chaque seconde
+    setTimeout(afficherHeure, 1000);
+}
+
+    // Appeler la fonction pour la première fois
+    afficherHeure();
+    </script>
+</div3>
+    <h2>Source : Le Monde</h2>
+
+    <ul id="rss-feed"></ul>
+
+    <script>
+        // URL du flux RSS
+        const RSS_URL = 'https://www.lemonde.fr/rss/en_continu.xml'; // Remplacez par l'URL de votre flux RSS
+
+        // Fonction pour récupérer et afficher le flux RSS
+        async function fetchRSS() {
+            try {
+                const response = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${RSS_URL}`);
+                const data = await response.json();
+                const items = data.items;
+
+                let feedContent = '';
+                items.forEach(item => {
+                    feedContent += `<li><a href="${item.link}" target="_blank">${item.title}</a></li>`;
+                });
+
+                document.getElementById('rss-feed').innerHTML = feedContent;
+            } catch (error) {
+                console.error('Erreur lors de la récupération du flux RSS:', error);
+            }
+        }
+
+        // Appel de la fonction pour récupérer et afficher le flux RSS
+        fetchRSS();
+    </script>
+</body>
+</html>

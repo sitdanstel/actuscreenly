@@ -1,0 +1,44 @@
+.logo {
+    width: 100px; 
+    height: auto; /* Ajustez la taille selon votre logo */
+    position: absolute;
+    bottom: 20px; /* Ajustez la valeur pour définir la distance depuis le bas */
+    right: 20px; /* Ajustez la valeur pour définir la distance depuis la droite */
+    width: 225px; /* Ajustez la largeur du logo */
+    height: auto; /* Garantit le respect des proportions */
+}
+
+
+div2 {
+    font-family: Courier, sans-serif;
+    text-align: left;
+    padding: 0px;
+    font-size: 1.5em;
+    font-weight: bold; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    padding: 20px; /* Pour un espacement autour du texte */
+}
+
+
+h2 {
+    position: absolute;
+    bottom: 20px; /* Distance du bas de la page (20px dans cet exemple) */
+    left: 20px; /* Distance de la gauche de la page (20px dans cet exemple) */
+    font-size: 1em;
+    font-weight: bold; 
+
+
+}
+
+
+div3 {
+        font-family: Courier, sans-serif;    
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: 20px; /* Pour un espacement autour du texte */
+        font-size: 1.5em;
+        font-weight: bold; 
+}
